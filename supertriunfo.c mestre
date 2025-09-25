@@ -1,0 +1,68 @@
+#include <stdio.h>
+
+int main() {
+    // Dados da Carta 1
+    float populacao1 = 1.4; // milhões
+    float area1 = 281730.0; // km²
+    float pib1 = 81.5;      // bilhões
+    int pontos_turisticos1 = 25;
+
+    float densidade1 = (populacao1 * 1000000) / area1;
+    float pib_per_capita1 = (pib1 * 1000) / populacao1;
+
+    // Dados da Carta 2
+    float populacao2 = 12.3;
+    float area2 = 121400.0;
+    float pib2 = 450.0;
+    int pontos_turisticos2 = 50;
+
+    float densidade2 = (populacao2 * 1000000) / area2;
+    float pib_per_capita2 = (pib2 * 1000) / populacao2;
+
+    // Pontos
+    int pontos1 = 0;
+    int pontos2 = 0;
+
+    // Comparações
+    pontos1 += (populacao1 > populacao2);
+    pontos2 += (populacao2 > populacao1);
+    printf("População: %s vence\n", (populacao1 > populacao2) ? "Carta 1" : (populacao2 > populacao1) ? "Carta 2" : "Empate");
+
+    pontos1 += (area1 > area2);
+    pontos2 += (area2 > area1);
+    printf("Área: %s vence\n", (area1 > area2) ? "Carta 1" : (area2 > area1) ? "Carta 2" : "Empate");
+
+    pontos1 += (pib1 > pib2);
+    pontos2 += (pib2 > pib1);
+    printf("PIB: %s vence\n", (pib1 > pib2) ? "Carta 1" : (pib2 > pib1) ? "Carta 2" : "Empate");
+
+    pontos1 += (densidade1 > densidade2);
+    pontos2 += (densidade2 > densidade1);
+    printf("Densidade: %s vence\n", (densidade1 > densidade2) ? "Carta 1" : (densidade2 > densidade1) ? "Carta 2" : "Empate");
+
+    pontos1 += (pib_per_capita1 > pib_per_capita2);
+    pontos2 += (pib_per_capita2 > pib_per_capita1);
+    printf("PIB per capita: %s vence\n", (pib_per_capita1 > pib_per_capita2) ? "Carta 1" : (pib_per_capita2 > pib_per_capita1) ? "Carta 2" : "Empate");
+
+    pontos1 += (pontos_turisticos1 > pontos_turisticos2);
+    pontos2 += (pontos_turisticos2 > pontos_turisticos1);
+    printf("Pontos turísticos: %s vence\n", (pontos_turisticos1 > pontos_turisticos2) ? "Carta 1" : (pontos_turisticos2 > pontos_turisticos1) ? "Carta 2" : "Empate");
+
+    // Resultado final
+    printf("\nPontuação final:\n");
+    printf("Carta 1: %d pontos\n", pontos1);
+    printf("Carta 2: %d pontos\n", pontos2);
+
+    // Vencedor
+    int super_poder1 = (pontos1 >= 4);
+    int super_poder2 = (pontos2 >= 4);
+
+    printf("%s\n", 
+        super_poder1 ? "Carta 1 venceu com SUPER PODER!" :
+        super_poder2 ? "Carta 2 venceu com SUPER PODER!" :
+        (pontos1 > pontos2) ? "Carta 1 venceu!" :
+        (pontos2 > pontos1) ? "Carta 2 venceu!" :
+        "Empate!");
+
+    return 0;
+}
